@@ -34,23 +34,33 @@ export default function App() {
             Step {step}: {messages[step - 1]}
           </p>
           <div className="buttons">
-            <button
+            <Button
               id="Prev"
-              onClick={(ev) => handleStepDirection(ev)}
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+              handleStepDirection={handleStepDirection}
+              styles={{ backgroundColor: "#7950f2", color: "#fff" }}
             >
-              Previous
-            </button>
-            <button
+              <span>👈 Prev</span>
+            </Button>
+            <Button
               id="Next"
-              onClick={(ev) => handleStepDirection(ev)}
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+              handleStepDirection={handleStepDirection}
+              styles={{ backgroundColor: "#7950f2", color: "#fff" }}
             >
-              Next
-            </button>
+              <span>Next 👉</span>
+            </Button>
           </div>
         </div>
       )}
+    </>
+  );
+}
+
+function Button({ id, handleStepDirection, styles, children }) {
+  return (
+    <>
+      <button id={id} onClick={(ev) => handleStepDirection(ev)} style={styles}>
+        {children}
+      </button>
     </>
   );
 }
